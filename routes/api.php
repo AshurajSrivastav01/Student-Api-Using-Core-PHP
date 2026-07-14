@@ -1,6 +1,11 @@
 <?php
 
-use App\Core\Application;
+use App\Core\Router;
 use App\Controllers\UserController;
 
-$router->get('/users', [UserController::class, 'index']);
+return function (Router $router): void {
+    $router->get('/users', [UserController::class, 'index']);
+    $router->post('/users', [UserController::class, 'store']);
+    $router->put('/users', [UserController::class, 'update']);
+    $router->delete('/users', [UserController::class, 'destroy']);
+};

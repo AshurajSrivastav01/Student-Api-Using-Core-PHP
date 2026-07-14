@@ -9,8 +9,35 @@ class UserController
     public function index()
     {
         Response::json([
-            'message' => 'User index endpoint',
-            'status' => 'success'
+            'status' => true,
+            'message' => 'User index endpoint'
         ], 200);
+    }
+
+    public function store(): void
+    {
+        Response::json([
+            'success'=>true,
+            'message'=>'User Created',
+            'data'=>[]
+        ]);
+    }
+
+    public function update(): void
+    {
+        Response::json([
+            'success'=>true,
+            'message'=>'User Updated',
+            'data'=>[]
+        ]);
+    }
+
+    public function destroy(): void
+    {
+        Response::json([
+            'success'=>true,
+            'message'=>'User Deleted',
+            'data'=>[]
+        ]);
     }
 }
