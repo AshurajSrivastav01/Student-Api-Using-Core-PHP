@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Responses\Response;
+
 class UserController
 {
     public function index()
     {
-        return "Users List";
+        Response::json([
+            'message' => 'User index endpoint',
+            'status' => 'success'
+        ], 200);
     }
 }
