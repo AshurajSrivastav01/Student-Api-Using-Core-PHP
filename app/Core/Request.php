@@ -31,4 +31,15 @@ class Request
     {
         return $this->post[$key] ?? $this->get[$key] ?? $default;
     }
+
+    public function has(string $key): bool
+    {
+        return array_key_exists($key, $this->all());
+    }
+    
+    public function all(): array
+    {
+        return [...$_GET, ...$_POST];
+    }
+
 }
