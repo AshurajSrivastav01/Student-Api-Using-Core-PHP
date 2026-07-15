@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Request;
 use App\Responses\Response;
 
 class UserController
@@ -14,12 +15,12 @@ class UserController
         ], 200);
     }
 
-    public function store(): void
+    public function store(Request $request): void
     {
         Response::json([
             'success'=>true,
             'message'=>'User Created',
-            'data'=>[]
+            'data'=>$request->all()
         ]);
     }
 

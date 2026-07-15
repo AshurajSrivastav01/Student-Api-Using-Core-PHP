@@ -9,8 +9,12 @@ class Request
     private array $server;
 
     public function __construct(){
+        // var_dump(file_get_contents('php://input'));
+        // die();
+
         $this->get = $_GET;
-        $this->post = $_POST;
+        $json = json_decode(file_get_contents('php://input'), true);
+        $this->post = !empty($json) ? $json : $_POST;
         $this->server = $_SERVER;
     }
 
@@ -36,10 +40,10 @@ class Request
     {
         return array_key_exists($key, $this->all());
     }
-    
+
     public function all(): array
     {
-        return [...$_GET, ...$_POST];
+        return array_merge($this->get, $this->post);
     }
 
 }

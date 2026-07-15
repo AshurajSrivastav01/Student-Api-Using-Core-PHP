@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Responses\Response;
+use App\Core\Request;
 
 class Router
 {
@@ -60,6 +61,8 @@ class Router
             return;
         }
 
-        $instance->$method();
+        $request = new Request();
+
+        $instance->$method($request);
     }
 }
