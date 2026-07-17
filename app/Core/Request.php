@@ -26,10 +26,16 @@ class Request
     public function uri(): string
     {
         return parse_url(
-            $this->server['REQUEST_URI'],
+            $this->server['REQUEST_URI'] ?? '/',
             PHP_URL_PATH
-        );
+        ) ?: '/';
     }
+
+    // public function uri(): string
+    // {
+    //     var_dump($this->server['REQUEST_URI'] ?? 'REQUEST_URI NOT FOUND');
+    //     die();
+    // }
 
     public function input(string $key, mixed $default = null): mixed
     {

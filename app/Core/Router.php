@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Responses\Response;
 use App\Core\Request;
+use App\Middleware\AuthMiddleware;
 
 class Router
 {
@@ -61,6 +62,10 @@ class Router
             return;
         }
 
+        $middleware = new AuthMiddleware();
+        if (!$middleware->handle()) {
+            return;
+        }
         $request = new Request();
 
         $instance->$method($request);
